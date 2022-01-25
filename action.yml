@@ -3,6 +3,10 @@ name: 'Cypress.io'
 description: 'GitHub Action for running Cypress end-to-end tests'
 author: 'Gleb Bahmutov'
 inputs:
+  nodeVersion:
+    description: 'Override the default Node Version'
+    required: false
+    default: 'node16'
   record:
     description: 'Sends test results to Cypress Dashboard'
     required: false
@@ -84,6 +88,7 @@ outputs:
   dashboardUrl:
     description: 'Cypress Dashboard URL if the run was recorded'
 runs:
+  using: ${{ inputs.nodeVersion }}
   main: 'dist/index.js'
 branding:
   color: 'green'
